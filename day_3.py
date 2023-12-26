@@ -17,11 +17,11 @@ def main_part_one():
     tot_count = 0
 
     for r, row in enumerate(matrix):
-        print(row)
+        # print(row)
         nums, count = nums_in_row(matrix, r, symbol_map)
         tot_count += count
 
-    print(tot_count)
+    print('Part 1', tot_count)
     return tot_count
 
 
@@ -33,17 +33,14 @@ def main_part_two():
     symbol_map = {}
 
     for r, row in enumerate(matrix):
-        print(row)
-        nums, count = nums_in_row(matrix, r, symbol_map)
+        _, _ = nums_in_row(matrix, r, symbol_map)
 
-    print('symbol map', symbol_map)
     for symbol in symbol_map:
         if symbol_map[symbol][0] == 2:
-            print('valid sym', symbol_map[symbol])
             ratio = symbol_map[symbol][1][0] * symbol_map[symbol][1][1]
             tot_count += ratio
 
-    print(tot_count)
+    print('Part 2', tot_count)
     return tot_count
 
 
@@ -60,7 +57,6 @@ def nums_in_row(matrix, r, symbol_map):
             verified, symbols = verify_num(matrix, r, col, end)
 
             if verified:
-                print('verified num', num, 'at', r, col)
                 nums.append(num)
 
                 for symbol in symbols:
@@ -71,7 +67,6 @@ def nums_in_row(matrix, r, symbol_map):
                         symbol_map[symbol][1].append(num)
 
             col = end + 1
-            print('new col', col)
         else:
             col += 1
 
@@ -123,6 +118,7 @@ def verify_num(matrix, r, c1, c2):
 
 
 if __name__ == '__main__':
+    main_part_one()
     main_part_two()
 
 # BAD STRATEGY
