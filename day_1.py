@@ -79,6 +79,14 @@ def line_solver_two(input_string):
         return 10 * char1 + char2
 
 
+def calculate_probability(x):
+    # Assumes x is in years
+    days = 365 * x
+    days -= (int(days/365)) * 365
+
+    return ((days / 8760 * 24) / 365.25) * 100 / 3
+
+
 def main():
     with open('files/day1.txt', 'r') as file:
         lines = file.readlines()
@@ -91,5 +99,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    print(calculate_probability(10.5))
 
